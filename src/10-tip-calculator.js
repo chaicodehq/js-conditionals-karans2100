@@ -30,5 +30,58 @@
  * @returns {{ tipPercentage: number, tipAmount: number, totalAmount: number } | null}
  */
 export function calculateTip(billAmount, serviceRating) {
-  // Your code here
+    if (
+        billAmount <= 0 ||
+        (serviceRating != 1 &&
+            serviceRating != 2 &&
+            serviceRating != 3 &&
+            serviceRating != 4 &&
+            serviceRating != 5)
+    ) {
+        return null;
+    }
+
+    let tipAmount = 0;
+    let totalAmount = 0;
+    if (serviceRating == 1) {
+        tipAmount = parseFloat((0.05 * billAmount).toFixed(2));
+        totalAmount = parseFloat((billAmount + tipAmount).toFixed(2));
+        return {
+            tipPercentage: 5,
+            tipAmount: tipAmount,
+            totalAmount: totalAmount,
+        };
+    } else if (serviceRating == 2) {
+        tipAmount = parseFloat((0.1 * billAmount).toFixed(2));
+        totalAmount = parseFloat((billAmount + tipAmount).toFixed(2));
+        return {
+            tipPercentage: 10,
+            tipAmount: tipAmount,
+            totalAmount: totalAmount,
+        };
+    } else if (serviceRating == 3) {
+        tipAmount = parseFloat((0.15 * billAmount).toFixed(2));
+        totalAmount = parseFloat((billAmount + tipAmount).toFixed(2));
+        return {
+            tipPercentage: 15,
+            tipAmount: tipAmount,
+            totalAmount: totalAmount,
+        };
+    } else if (serviceRating == 4) {
+        tipAmount = parseFloat((0.2 * billAmount).toFixed(2));
+        totalAmount = parseFloat((billAmount + tipAmount).toFixed(2));
+        return {
+            tipPercentage: 20,
+            tipAmount: tipAmount,
+            totalAmount: totalAmount,
+        };
+    } else if (serviceRating == 5) {
+        tipAmount = parseFloat((0.25 * billAmount).toFixed(2));
+        totalAmount = parseFloat((billAmount + tipAmount).toFixed(2));
+        return {
+            tipPercentage: 25,
+            tipAmount: tipAmount,
+            totalAmount: totalAmount,
+        };
+    }
 }
